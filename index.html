@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ivan Valentić – Mechanical Design &amp; CAD</title>
+<meta name="description" content="Mechanical design engineer: 3D models, assemblies with exploded views, manufacturing drawings, fixtures and assembly lines.">
+<meta name="theme-color" content="#192229">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#192229;--bg2:#1f2b34;--card:#22303a;--line:#33434f;--ink:#e9eef2;--ink2:#b4c0c9;--mut:#83939f;--acc:#f08a3c;--acc2:#38b2ac}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.6;font-size:16px}
+a{color:var(--acc)}img{display:block;max-width:100%}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+.mono{font-family:"JetBrains Mono",monospace;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--acc)}
+nav{position:fixed;inset:0 0 auto;z-index:30;background:rgba(25,34,41,.82);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.06)}
+nav .wrap{display:flex;justify-content:space-between;align-items:center;height:62px}
+nav .brand{color:var(--ink);text-decoration:none;font-weight:600;letter-spacing:.04em}
+nav ul{display:flex;gap:28px;list-style:none;margin:0;padding:0}
+nav ul a{color:var(--ink2);text-decoration:none;font-size:.92rem}nav ul a:hover{color:var(--ink)}
+@media(max-width:700px){nav ul{gap:16px}nav ul li:nth-child(3){display:none}}
+
+.hero{min-height:100vh;display:flex;align-items:flex-end;position:relative;overflow:hidden;padding:120px 0 70px}
+.hero .bg{position:absolute;inset:0;background:url(img/op_expl.jpg) right 8% center/auto 88% no-repeat;opacity:.18;filter:grayscale(.3);-webkit-mask-image:radial-gradient(ellipse 45% 55% at 68% 50%,#000 55%,transparent 100%);mask-image:radial-gradient(ellipse 45% 55% at 68% 50%,#000 55%,transparent 100%)}
+.hero .bg:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--bg) 35%,rgba(25,34,41,.4) 100%),linear-gradient(0deg,var(--bg) 0%,transparent 40%)}
+.hero .wrap{position:relative;width:100%}
+.hero h1{font-size:clamp(2.6rem,7vw,5.2rem);line-height:1.02;margin:14px 0 18px;font-weight:600;letter-spacing:-.02em}
+.hero .tag{font-size:clamp(1rem,2vw,1.25rem);color:var(--ink2);margin:0 0 34px}
+.hero .tag b{color:var(--ink);font-weight:500}
+.scroll{color:var(--mut);text-decoration:none;font-size:.9rem}
+.scroll:hover{color:var(--ink)}
+
+section{padding:110px 0;border-top:1px solid rgba(255,255,255,.05)}
+h2{font-size:clamp(1.8rem,3.5vw,2.6rem);margin:10px 0 18px;font-weight:600;letter-spacing:-.01em}
+.lead{color:var(--ink2);font-size:1.1rem;max-width:760px}
+
+.about-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:44px}
+@media(max-width:900px){.about-grid{grid-template-columns:1fr}}
+.box{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px}
+.box h3{margin:0 0 10px;font-size:1.05rem}.box p,.box li{color:var(--ink2);font-size:.94rem}
+.box ul{margin:0;padding-left:18px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.chips span,.tags span{font-size:.78rem;padding:5px 10px;border-radius:20px;background:rgba(255,255,255,.06);border:1px solid var(--line);color:var(--ink2)}
+
+.xpgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:22px}
+@media(max-width:900px){.xpgrid{grid-template-columns:1fr}}
+.xp{border-left:2px solid var(--acc);padding:4px 0 4px 16px}
+.xp h4{margin:0;font-size:1rem}.xp .where{color:var(--acc2);font-size:.82rem;margin:2px 0 6px}
+.xp p{margin:0;color:var(--ink2);font-size:.9rem}
+.edu{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:22px}
+@media(max-width:900px){.edu{grid-template-columns:1fr}}
+
+.feat{display:grid;grid-template-columns:1.25fr 1fr;gap:44px;align-items:start;margin-top:30px}
+@media(max-width:980px){.feat{grid-template-columns:1fr}}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:26px 0}
+.stats div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px}
+.stats b{display:block;font-size:1.6rem;color:var(--acc)}.stats span{font-size:.78rem;color:var(--mut)}
+@media(max-width:600px){.stats{grid-template-columns:repeat(2,1fr)}}
+.feat h4{margin:22px 0 6px;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--acc2);font-family:"JetBrains Mono",monospace}
+.feat ul{padding-left:18px;color:var(--ink2);font-size:.95rem}.feat p{color:var(--ink2)}
+.note{font-size:.8rem;color:var(--mut)}
+
+.gal{margin:0}
+.gal .main{background:#f3f5f7;border-radius:12px;overflow:hidden;aspect-ratio:4/3;display:grid;place-items:center;cursor:zoom-in}
+.gal .main img{max-height:100%;object-fit:contain}
+.gal figcaption{font-size:.8rem;color:var(--mut);margin:8px 2px}
+.ths{display:flex;gap:8px;flex-wrap:wrap}
+.th{padding:0;border:2px solid transparent;border-radius:8px;background:#f3f5f7;width:64px;height:48px;cursor:pointer;overflow:hidden}
+.th img{width:100%;height:100%;object-fit:contain}.th.on{border-color:var(--acc)}
+
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;margin-top:40px}
+@media(max-width:900px){.cards{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;display:flex;flex-direction:column}
+.cbody{padding:12px 8px 6px}
+.lbl{font-family:"JetBrains Mono",monospace;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--acc2)}
+.card h3{margin:6px 0 6px;font-size:1.3rem}.card p{color:var(--ink2);margin:0 0 12px;font-size:.95rem}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+details summary{cursor:pointer;color:var(--acc);font-weight:500;list-style:none}
+details summary::-webkit-details-marker{display:none}
+details summary:after{content:" ↓"}details[open] summary:after{content:" ↑"}
+details h4{margin:14px 0 4px;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mut);font-family:"JetBrains Mono",monospace}
+
+.draw{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:36px}
+@media(max-width:800px){.draw{grid-template-columns:repeat(2,1fr)}}
+.dw{display:block;text-decoration:none;color:var(--ink2);background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px}
+.dw img{background:#fff;border-radius:8px;aspect-ratio:1.414;object-fit:contain;width:100%}
+.dw span{display:block;font-size:.85rem;margin-top:8px}
+
+.contact{text-align:center}
+.contact .mail{font-size:clamp(1.3rem,3vw,2rem);color:var(--ink);font-weight:600;user-select:all}
+.btn{display:inline-block;margin-top:22px;padding:12px 22px;border-radius:30px;background:var(--acc);color:#1b1b1b;text-decoration:none;font-weight:600}
+.btn.ghost{background:transparent;border:1px solid var(--line);color:var(--ink);margin-left:8px}
+footer{padding:30px 0;text-align:center;color:var(--mut);font-size:.82rem;border-top:1px solid rgba(255,255,255,.05)}
+#lb{position:fixed;inset:0;background:rgba(10,14,18,.94);display:none;flex-direction:column;align-items:center;justify-content:center;z-index:60;padding:24px;cursor:zoom-out}
+#lb img{max-width:96%;max-height:86vh;background:#fff;border-radius:8px}
+#lb p{color:var(--ink2);font-size:.9rem}
+</style>
+</head>
+<body>
+<nav><div class="wrap"><a class="brand" href="#top">IVAN VALENTIĆ</a>
+<ul><li><a href="#about">About</a></li><li><a href="#projects">Projects</a></li><li><a href="#drawings">Drawings</a></li><li><a href="#contact">Contact</a></li></ul></div></nav>
+
+<header class="hero" id="top"><div class="bg"></div><div class="wrap">
+<div class="mono">Mechanical &amp; industrial engineer · MSc</div>
+<h1>Ivan Valentić</h1>
+<p class="tag"><b>Mechanical Design</b> · <b>Assemblies &amp; Exploded Views</b> · <b>Manufacturing Drawings</b> · <b>DFM</b></p>
+<a class="scroll" href="#about">Scroll to explore ↓</a>
+</div></header>
+
+<section id="about"><div class="wrap">
+<div class="mono">About</div>
+<h2>Built to be made, assembled and inspected.</h2>
+<p class="lead">Mechanical engineer with an MSc in industrial engineering and six years across machine building, automotive production equipment, hydropower, MedTech and rugged electronics. I turn sketches and ideas into parametric 3D models, assemblies with exploded views and 2D drawings with tolerances and parts lists, and I check them for manufacturing and assembly before they reach the shop. During my studies I worked on CNC machines, so I design with the machinist and the fixture in mind.</p>
+
+<div class="about-grid">
+<div class="box"><h3>CAD modelling</h3><p>Parametric parts and assemblies, mates and motion, exploded views, interference and printability checks, STEP / STL export.</p><div class="chips"><span>SOLIDWORKS 2023</span><span>CATIA V5</span><span>Siemens NX</span><span>Creo</span><span>Inventor</span><span>FreeCAD</span></div></div>
+<div class="box"><h3>Technical drawing</h3><p>Manufacturing and assembly drawings with ISO fits, GD&amp;T, surface finish, sections, parts lists and revision control.</p><div class="chips"><span>ISO 286</span><span>GD&amp;T</span><span>AutoCAD</span><span>BOM / SAP</span></div></div>
+<div class="box"><h3>Tools &amp; competencies</h3><p>Design for manufacturing and assembly, fixtures and workstations, quality planning and supplier first samples.</p><div class="chips"><span>DFM / DFA</span><span>DFMEA</span><span>PPAP</span><span>8D</span><span>Lean Six Sigma GB</span><span>Python</span><span>Minitab</span></div></div>
+</div>
+
+<h3 style="margin:56px 0 0">Experience</h3>
+<div class="xpgrid"><div class="xp"><h4>Supplier quality &amp; project purchasing</h4><div class="where">Rugged industrial electronics</div><p>DFM/DFMEA on new rugged device designs, control plans and first-sample release (PPAP), 8D with suppliers, technical RFQ packages, module lead for a rugged carrying case in a simultaneous-engineering team.</p></div><div class="xp"><h4>Industrial engineer – production</h4><div class="where">MedTech start-up</div><p>Pilot-production workstations, assembly tools and test equipment, a 3D-printed torque test rig with load cells, work instructions and the transfer from prototype to series production.</p></div><div class="xp"><h4>Mechanical engineer</h4><div class="where">Hydropower generator manufacturer</div><p>Generator-housing concepts and 3D models, stability during transport, cost-benefit comparison and BOMs in SAP.</p></div><div class="xp"><h4>Industrial engineer</h4><div class="where">Electric-motor manufacturer</div><p>New lean assembly line, workstations, pallets and rotary tables; 15 % shorter assembly cycle time.</p></div><div class="xp"><h4>Mechanical design engineer</h4><div class="where">Automotive production equipment</div><p>Machine parts and modifications in CATIA V5 for robotic production cells, BOMs, change tracking and Excel–CATIA macros.</p></div><div class="xp"><h4>CNC machining (during studies)</h4><div class="where">Job shop</div><p>Operated and maintained CNC machines, read drawings and checked parts – the reason my drawings are made with the machinist in mind.</p></div></div>
+
+<div class="edu">
+<div class="box"><h3>Education</h3><ul><li><b>MSc Mechanical Engineering</b> – Industrial Engineering &amp; Management, University of Zagreb. Thesis: Lean Six Sigma in electric-motor assembly.</li><li><b>BSc Mechanical Engineering</b> – drawings and 3D models of bearings, couplings and pressure vessels in machine-elements courses.</li><li><b>Lean Six Sigma Green Belt</b></li></ul></div>
+<div class="box"><h3>Languages</h3><p>Croatian (native) · English (professional) · German (intermediate)</p></div>
+</div>
+</div></section>
+
+<section id="featured"><div class="wrap">
+<div class="mono">Featured project · industry · implemented</div>
+<h2>Electric-Motor Assembly Line with Lean Workstations &amp; Rotary Tables</h2>
+<p class="lead">Redesign of a manual assembly area for industrial electric motors: a new flow line, three ergonomic workstation variants, motor pallets and a foot-operated rotary work table, all modelled in 3D and introduced in production.</p>
+<div class="stats"><div><b>5</b><span>stations on the new line</span></div><div><b>−15 %</b><span>assembly cycle time</span></div><div><b>3</b><span>workstation concepts</span></div><div><b>2</b><span>pallet designs</span></div></div>
+<div class="feat">
+<figure class="gal" id="g-feat"><div class="main"><img src="img/line_overview.jpg" alt="Assembly line – CATIA V5 model"></div>
+<figcaption>Assembly line – CATIA V5 model</figcaption><div class="ths"><button class="th on" data-src="img/line_overview.jpg" data-cap="Assembly line – CATIA V5 model"><img src="img/line_overview.jpg" alt="Assembly line – CATIA V5 model"></button><button class="th" data-src="img/ws1.jpg" data-cap="Workstation variant 1"><img src="img/ws1.jpg" alt="Workstation variant 1"></button><button class="th" data-src="img/ws2.jpg" data-cap="Workstation variant 2"><img src="img/ws2.jpg" alt="Workstation variant 2"></button><button class="th" data-src="img/ws3.jpg" data-cap="Workstation variant 3 – swivel tool arm"><img src="img/ws3.jpg" alt="Workstation variant 3 – swivel tool arm"></button><button class="th" data-src="img/rotary_table.jpg" data-cap="Rotary work table – 3D and 2D"><img src="img/rotary_table.jpg" alt="Rotary work table – 3D and 2D"></button><button class="th" data-src="img/pallets.jpg" data-cap="Pallet concepts for different motor sizes"><img src="img/pallets.jpg" alt="Pallet concepts for different motor sizes"></button><button class="th" data-src="img/line_layout.jpg" data-cap="2D layout of the new assembly area"><img src="img/line_layout.jpg" alt="2D layout of the new assembly area"></button></div></figure>
+<div><h4>The challenge</h4><p>Motors were moved between operations on carts and turned by hand. Tools and parts were not at the point of use, so transport and handling took a large share of the cycle time.</p><h4>What I did</h4><ul><li>Time studies, Yamazumi, Pareto and box-plot analysis (Lean Six Sigma DMAIC)</li><li>3D model of the complete line in CATIA V5: gravity roller conveyors, pallets, rotary tables</li><li>Three aluminium-profile workstation variants (MTpro) with shelves, tool holders and swivel tool arm</li><li>Rotary work table with foot pedal and rollers; two pallet concepts (hole grid vs. T-slots with stops)</li><li>2D layout of the new assembly area and re-balanced work content per station</li></ul><p class="note">Company and product details anonymised. All images are my own models from the project.</p></div>
+</div>
+</div></section>
+
+<section id="projects"><div class="wrap">
+<div class="mono">Projects</div>
+<h2>Selected work</h2>
+<p class="lead">Industry, university and self-initiated projects. Each card shows the goal, the process and what a client would receive. Click any image to enlarge.</p>
+<div class="cards">
+<article class="card" id="gantry">
+<figure class="gal" id="g-gantry"><div class="main"><img src="img/cnc_iso.jpg" alt="Assembled – isometric"></div>
+<figcaption>Assembled – isometric</figcaption><div class="ths"><button class="th on" data-src="img/cnc_iso.jpg" data-cap="Assembled – isometric"><img src="img/cnc_iso.jpg" alt="Assembled – isometric"></button><button class="th" data-src="img/cnc_rear.jpg" data-cap="Rear view"><img src="img/cnc_rear.jpg" alt="Rear view"></button><button class="th" data-src="img/cnc_detail.jpg" data-cap="Carriage detail"><img src="img/cnc_detail.jpg" alt="Carriage detail"></button></div></figure>
+<div class="cbody"><div class="lbl">Machine design · automation</div><h3>3-Axis Cartesian Gantry for a CNC Cell</h3><p>Pick-and-place gantry that moves workpieces from a storage rack to a CNC milling machine – full assembly and design review.</p>
+<div class="tags"><span>Assembly</span><span>Standard parts</span><span>Design review</span></div>
+<details><summary>Read more</summary><h4>Goal</h4><p>Low-budget laboratory automation built only from standard, easy-to-buy parts: 710 × 681 × 690 mm envelope, 600 mm axis travel.</p><h4>Process</h4><p>Compared gantry, horizontal and vertical robot layouts and chose a Cartesian gantry for cost and simplicity. Built the frame from 45 mm aluminium profiles with igus bearings, Ø10 lead screws, stepper motors and DIN fasteners. A later design review with interference analysis found two issues and fixed them: an oversized base plate (520 × 620 → 515 × 595 mm) and linear bearings running on threaded rods (now separate Ø10 h6 guide rods plus a Tr10×2 lead screw).</p></details></div></article>
+<article class="card" id="fixture">
+<figure class="gal" id="g-fixture"><div class="main"><img src="img/fix_expl.jpg" alt="Exploded view – fixture body, workpiece, clamp screw, mounting screws"></div>
+<figcaption>Exploded view – fixture body, workpiece, clamp screw, mounting screws</figcaption><div class="ths"><button class="th on" data-src="img/fix_expl.jpg" data-cap="Exploded view – fixture body, workpiece, clamp screw, mounting screws"><img src="img/fix_expl.jpg" alt="Exploded view – fixture body, workpiece, clamp screw, mounting screws"></button><button class="th" data-src="img/fix_iso.jpg" data-cap="Assembled"><img src="img/fix_iso.jpg" alt="Assembled"></button><button class="th" data-src="img/fix_under.jpg" data-cap="Underside"><img src="img/fix_under.jpg" alt="Underside"></button><button class="th" data-src="img/fix_top.jpg" data-cap="Top view"><img src="img/fix_top.jpg" alt="Top view"></button></div></figure>
+<div class="cbody"><div class="lbl">Jigs &amp; fixtures · CNC</div><h3>Workpiece Clamping Fixture for CNC Milling</h3><p>Locating and clamping fixture that holds a 100 × 24 × 17 mm bar repeatably on the milling table.</p>
+<div class="tags"><span>Fixture</span><span>Exploded view</span><span>Standard parts</span></div>
+<details><summary>Read more</summary><h4>Goal</h4><p>Hold the workpiece rigidly against cutting forces, allow quick loading and keep the same position for every part.</p><h4>Process</h4><p>A locating pocket in the 160 × 44 × 10 mm fixture body positions the bar; a DIN 7984 M5 low-head screw clamps it without entering the tool path; four M5 screws fix the fixture to the table. Only standard fasteners, fully mated SOLIDWORKS assembly, interference check and STEP export.</p></details></div></article>
+<article class="card" id="clamp">
+<figure class="gal" id="g-clamp"><div class="main"><img src="img/clamp_iso.jpg" alt="Assembled"></div>
+<figcaption>Assembled</figcaption><div class="ths"><button class="th on" data-src="img/clamp_iso.jpg" data-cap="Assembled"><img src="img/clamp_iso.jpg" alt="Assembled"></button><button class="th" data-src="img/clamp_expl.jpg" data-cap="Exploded view along the clamp axis"><img src="img/clamp_expl.jpg" alt="Exploded view along the clamp axis"></button></div></figure>
+<div class="cbody"><div class="lbl">Mechanism · machined parts</div><h3>Clamp-On Accessory Mount</h3><p>Tool-free C-clamp that fixes an accessory plate to a table or counter edge up to ~35 mm thick.</p>
+<div class="tags"><span>Mechanism</span><span>Exploded view</span><span>Concept study 2026</span></div>
+<details><summary>Read more</summary><h4>Goal</h4><p>Attach accessories to edges of different thickness without drilling or tools, using parts that are simple to machine.</p><h4>Process</h4><p>Open C-frame milled from 6061 aluminium (2.5D machining only), M10 clamp screw with knurled stainless knob, swivel pad that spreads the load and protects the surface, accessory plate bolted with two ISO 4762 M6 screws. Five parts, interference-checked assembly, exploded view and STEP.</p></details></div></article>
+<article class="card" id="puck">
+<figure class="gal" id="g-puck"><div class="main"><img src="img/puck_iso.jpg" alt="With reference puck"></div>
+<figcaption>With reference puck</figcaption><div class="ths"><button class="th on" data-src="img/puck_iso.jpg" data-cap="With reference puck"><img src="img/puck_iso.jpg" alt="With reference puck"></button><button class="th" data-src="img/puck_expl.jpg" data-cap="Exploded view"><img src="img/puck_expl.jpg" alt="Exploded view"></button><button class="th" data-src="img/puck_mount.jpg" data-cap="Pocket and cable channel"><img src="img/puck_mount.jpg" alt="Pocket and cable channel"></button></div></figure>
+<div class="cbody"><div class="lbl">Plastic part · DFM</div><h3>Charging-Puck Wall / Desk Mount</h3><p>Holder that recesses a Ø56 mm magnetic charging puck flush with the surface and routes the cable.</p>
+<div class="tags"><span>Plastic part</span><span>3D printing</span><span>Concept study 2026</span></div>
+<details><summary>Read more</summary><h4>Goal</h4><p>Puck sits flush and removable, cable exits at the bottom edge, mount fixes with two standard screws.</p><h4>Process</h4><p>Ø56.6 mm pocket (0.3 mm radial clearance) 0.1 mm deeper than the puck, 4.8 mm cable channel, countersunk M4 holes, engraved part number. A printability and thin-wall check in SOLIDWORKS found the engraving crossing the cable channel; it was moved before export. For moulding the back would be cored out to ~2.5 mm walls with 1° draft.</p></details></div></article>
+<article class="card" id="capsule">
+<figure class="gal" id="g-capsule"><div class="main"><img src="img/cap_iso.jpg" alt="Closed"></div>
+<figcaption>Closed</figcaption><div class="ths"><button class="th on" data-src="img/cap_iso.jpg" data-cap="Closed"><img src="img/cap_iso.jpg" alt="Closed"></button><button class="th" data-src="img/cap_expl.jpg" data-cap="Exploded view"><img src="img/cap_expl.jpg" alt="Exploded view"></button><button class="th" data-src="img/cap_thread.jpg" data-cap="Thread detail"><img src="img/cap_thread.jpg" alt="Thread detail"></button></div></figure>
+<div class="cbody"><div class="lbl">Two-part housing</div><h3>Threaded Two-Part Capsule</h3><p>Screw-cap container with real, printable ISO threads – the classic two-part threaded housing.</p>
+<div class="tags"><span>Modelled threads</span><span>Plastic parts</span><span>Concept study 2026</span></div>
+<details><summary>Read more</summary><h4>Goal</h4><p>Two parts that print without supports, close with a robust coarse thread and keep at least 1.5 mm wall at the thread root.</p><h4>Process</h4><p>M24×2 external and internal threads modelled (not cosmetic), shoulder at the thread run-out as a hard stop. Checking the wall at the thread root showed only 0.9 mm, so the bore was reduced to Ø18 mm (1.9 mm wall). Next step: ISO 965 thread clearance for printing and an O-ring groove for a waterproof version.</p></details></div></article>
+<article class="card" id="openpocket">
+<figure class="gal" id="g-openpocket"><div class="main"><img src="img/op_expl.jpg" alt="Exploded view – shell, PCB tray, lid, RF window insert"></div>
+<figcaption>Exploded view – shell, PCB tray, lid, RF window insert</figcaption><div class="ths"><button class="th on" data-src="img/op_expl.jpg" data-cap="Exploded view – shell, PCB tray, lid, RF window insert"><img src="img/op_expl.jpg" alt="Exploded view – shell, PCB tray, lid, RF window insert"></button><button class="th" data-src="img/op_iso.jpg" data-cap="Assembled"><img src="img/op_iso.jpg" alt="Assembled"></button></div></figure>
+<div class="cbody"><div class="lbl">Enclosure · exploded view · DFM review</div><h3>Handheld Electronics Enclosure – Exploded View &amp; DFM Study</h3><p>SOLIDWORKS assembly and exploded view of a 4-part handheld device enclosure (shell, lid, PCB tray, RF window insert, button cap).</p>
+<div class="tags"><span>Exploded view</span><span>Plastic parts</span><span>Open-source design</span></div>
+<details><summary>Read more</summary><h4>Goal</h4><p>Practise the typical consumer-electronics workflow: take supplier STEP data, build a clean assembly, check fit and present it as an exploded view for documentation.</p><h4>Process</h4><p>Imported the STEP parts into SOLIDWORKS, built the assembly (interference check: 0 clashes) and a separate exploded configuration along the assembly axis. Reviewed the parts for manufacturability: wall thickness, screw bosses, snap-in PCB tray and the separate RF window insert. Credit: the part geometry is the open-source OpenPocket enclosure (CERN-OHL-P licence) – not my design; my work is the assembly, exploded view and review.</p></details></div></article>
+<article class="card" id="motorbracket">
+<figure class="gal" id="g-motorbracket"><div class="main"><img src="img/mb_expl.jpg" alt="Exploded view – motor, side plates, rods, nuts and washers"></div>
+<figcaption>Exploded view – motor, side plates, rods, nuts and washers</figcaption><div class="ths"><button class="th on" data-src="img/mb_expl.jpg" data-cap="Exploded view – motor, side plates, rods, nuts and washers"><img src="img/mb_expl.jpg" alt="Exploded view – motor, side plates, rods, nuts and washers"></button><button class="th" data-src="img/mb_iso.jpg" data-cap="Assembled frame corner"><img src="img/mb_iso.jpg" alt="Assembled frame corner"></button><button class="th" data-src="img/mb_drw.jpg" data-cap="A3 exploded assembly drawing with balloons and parts list"><img src="img/mb_drw.jpg" alt="A3 exploded assembly drawing with balloons and parts list"></button></div></figure>
+<div class="cbody"><div class="lbl">Assembly · exploded view · drawing with parts list</div><h3>NEMA 17 Motor Bracket – Exploded Assembly Drawing</h3><p>Frame-corner bracket with stepper motor, two side plates, threaded rods and ISO fasteners – rebuilt as a clean assembly with exploded view and A3 exploded drawing with balloons and parts list.</p>
+<div class="tags"><span>Exploded view</span><span>Parts list / BOM</span><span>Standard fasteners</span></div>
+<details><summary>Read more</summary><h4>Goal</h4><p>Turn a loose example model into documentation a workshop can assemble from: one part per item, correct quantities, clear explode order and a parts list.</p><h4>Process</h4><p>Extracted the 11 unique parts (53 instances) to STEP, rebuilt the assembly in FreeCAD with consistent part numbers, defined the explode order along the bolt axis (inner nuts → washers → plates → outer washers → nuts → motor) and produced an A3 ISO 5457 drawing with balloons and parts list. Credit: original geometry from the open-source FreeCAD ExplodedAssembly example by J. M. García – my work is the cleanup, assembly structure, exploded view and drawing.</p></details></div></article>
+<article class="card" id="coupling">
+<figure class="gal" id="g-coupling"><div class="main"><img src="img/cpl_expl.jpg" alt="Exploded view with parts list"></div>
+<figcaption>Exploded view with parts list</figcaption><div class="ths"><button class="th on" data-src="img/cpl_expl.jpg" data-cap="Exploded view with parts list"><img src="img/cpl_expl.jpg" alt="Exploded view with parts list"></button><button class="th" data-src="img/cpl_assy.jpg" data-cap="Assembly drawing with section"><img src="img/cpl_assy.jpg" alt="Assembly drawing with section"></button><button class="th" data-src="img/cpl_body.jpg" data-cap="Detail drawing – coupling body"><img src="img/cpl_body.jpg" alt="Detail drawing – coupling body"></button><button class="th" data-src="img/cpl_ring.jpg" data-cap="Detail drawing – retaining ring"><img src="img/cpl_ring.jpg" alt="Detail drawing – retaining ring"></button></div></figure>
+<div class="cbody"><div class="lbl">Manufacturing drawings</div><h3>Flexible Shaft Coupling – Drawing Set</h3><p>Complete drawing set for a coupling with elastic element: assembly, exploded view with parts list and detail drawings.</p>
+<div class="tags"><span>2D drawings</span><span>Fits &amp; tolerances</span><span>Parts list</span></div>
+<details><summary>Read more</summary><h4>Goal</h4><p>Drawings a machine shop can quote and manufacture without clarification.</p><h4>Process</h4><p>Ø18 H7 bore, Ø32 H7/f7 fit, 6 P9 keyway with DIN 6885-A key, Ra 0.8–6.3 surface finish, EN-GJL-200 cast iron body and Sh54 elastomer element, ISO 4014 screws, first-angle projection.</p></details></div></article>
+</div>
+</div></section>
+
+<section id="drawings"><div class="wrap">
+<div class="mono">Drawing gallery</div>
+<h2>Technical drawings</h2>
+<p class="lead">Assembly, exploded and detail drawings with fits, tolerances and parts lists, plus layout drawings from the assembly-line project.</p>
+<div class="draw"><a class="dw" href="#" data-src="img/mb_drw.jpg" data-cap="Exploded assembly drawing &amp; parts list"><img src="img/mb_drw.jpg" alt="Exploded assembly drawing &amp; parts list"><span>Exploded assembly drawing &amp; parts list</span></a><a class="dw" href="#" data-src="img/cpl_expl.jpg" data-cap="Exploded view &amp; parts list"><img src="img/cpl_expl.jpg" alt="Exploded view &amp; parts list"><span>Exploded view &amp; parts list</span></a><a class="dw" href="#" data-src="img/cpl_assy.jpg" data-cap="Assembly drawing"><img src="img/cpl_assy.jpg" alt="Assembly drawing"><span>Assembly drawing</span></a><a class="dw" href="#" data-src="img/cpl_body.jpg" data-cap="Coupling body"><img src="img/cpl_body.jpg" alt="Coupling body"><span>Coupling body</span></a><a class="dw" href="#" data-src="img/rotary_table.jpg" data-cap="Rotary work table"><img src="img/rotary_table.jpg" alt="Rotary work table"><span>Rotary work table</span></a><a class="dw" href="#" data-src="img/line_layout.jpg" data-cap="Assembly-area layout"><img src="img/line_layout.jpg" alt="Assembly-area layout"><span>Assembly-area layout</span></a></div>
+</div></section>
+
+<section id="contact" class="contact"><div class="wrap">
+<div class="mono">Contact</div>
+<h2>Have a part, drawing or fixture to design?</h2>
+<p class="lead" style="margin:0 auto 18px">Send a short description with a sketch, photo or STEP file. I reply with questions, scope and a price.</p>
+<div class="mail">ivan.valentic231@gmail.com</div>
+<a class="btn" href="mailto:ivan.valentic231@gmail.com?subject=CAD%20project">Email me</a>
+<a class="btn ghost" href="https://www.linkedin.com/in/ivan-valenti%C4%87-116aa218a">LinkedIn</a>
+</div></section>
+<footer>© 2026 Ivan Valentić · Mechanical Design &amp; CAD · Croatia / Austria / remote</footer>
+<div id="lb"><img alt=""><p></p></div>
+<script>
+document.querySelectorAll('.gal').forEach(function(g){
+  var m=g.querySelector('.main img'),c=g.querySelector('figcaption');
+  g.querySelectorAll('.th').forEach(function(t){t.addEventListener('click',function(){
+    g.querySelectorAll('.th').forEach(function(x){x.classList.remove('on')});t.classList.add('on');
+    m.src=t.dataset.src;m.alt=t.dataset.cap;c.textContent=t.dataset.cap;});});
+});
+var lb=document.getElementById('lb'),li=lb.querySelector('img'),lp=lb.querySelector('p');
+function open(src,cap){li.src=src;lp.textContent=cap||'';lb.style.display='flex';}
+document.querySelectorAll('.gal .main img').forEach(function(i){i.addEventListener('click',function(){open(i.src,i.alt)})});
+document.querySelectorAll('.dw').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();open(a.dataset.src,a.dataset.cap)})});
+lb.addEventListener('click',function(){lb.style.display='none'});
+</script>
+</body>
+</html>
